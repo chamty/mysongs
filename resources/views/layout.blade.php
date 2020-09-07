@@ -5,12 +5,13 @@
     <meta name='csrf-token' content='{{ csrf_token() }}'>
     <title>My Songs</title>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'>
-    <style>body {padding: 80px;}</style>
+    <link rel='stylesheet' href="{{ asset('/css/layout.css') }}">
+    <!-- <style>body {padding: 80px;}</style> -->
     <script src='{{ asset("js/app.js") }}' defer></script>
   </head>
   <body>
     <nav class='navbar navbar-expand-md navbar-dark bg-dark fixed-top'>
-      <a class='navbar-brand' href={{ route('songs.list') }}>Songs</a>
+      <a class='navbar-brand' href={{ route('songs.list') }}>My Songs</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -42,7 +43,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 

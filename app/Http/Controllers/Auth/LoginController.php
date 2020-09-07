@@ -21,6 +21,12 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
+    public function redirectPath()
+    {
+        return '/songs';
+        //例）return 'costs/index';
+    }
+
     /**
      * Where to redirect users after login.
      *

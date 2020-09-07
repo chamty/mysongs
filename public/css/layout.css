@@ -1,0 +1,16 @@
+#song-title {
+  margin: 80px 0 30px 0;
+}
+
+#song-detail {
+  margin: 30px 0;
+}
+
+table tr th #red {
+  color: red;
+}
+
+.button {
+  margin: 5px 0;
+}
+/*# sourceMappingURL=layout.css.map */
