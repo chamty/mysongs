@@ -7,8 +7,8 @@
   <table class='table table-striped table-hover'>
     <tr>
       <th id="red" style="width:50%">曲名</th>
-      <th style="width:40%">アーティスト</th>
-      <th style="width:10%">完成度</th>
+      <th style="width:37%">アーティスト</th>
+      <th style="width:13%">完成度</th>
     </tr>
     @foreach ($songs as $song)
       <tr>
