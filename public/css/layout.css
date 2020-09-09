@@ -13,4 +13,9 @@ table tr th #red {
 .button {
   margin: 5px 0;
 }
+
+.input-edit {
+  width: 300px;
+  margin-bottom: 10px;
+}
 /*# sourceMappingURL=layout.css.map */

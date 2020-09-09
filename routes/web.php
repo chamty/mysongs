@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/user/{user}', 'UserController@edit')->name('user.edit');
-Route::post('/user/{user}', 'UserController@update')->name('user.update');
+Route::get('/user/index', 'UserController@index')->name('user.index');
+Route::get('/user/edit', 'UserController@edit')->name('user.edit');
+Route::post('/user/update', 'UserController@update')->name('user.update');
 

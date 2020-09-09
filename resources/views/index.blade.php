@@ -27,6 +27,9 @@
     <div>
       <a href={{ route('songs.new') }} class='btn btn-outline-primary button'>追加</a>
     </div>
+    <div>
+      <a href={{ route('user.index') }} class='btn btn-outline-primary button'>登録情報の確認</a>
+    </div>
   @endauth
 
 @endsection
