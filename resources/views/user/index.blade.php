@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 id="song-title">登録情報の編集</h1>
+    <h1 id="song-title">登録情報</h1>
     <div class="profile-list">
       <div class="profile-group">
         <div class="profile-title">名前</div>

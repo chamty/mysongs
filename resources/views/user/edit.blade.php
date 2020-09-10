@@ -57,6 +57,7 @@
         </div>
       </div> -->
         <button type="submit" class='btn btn-outline-primary button'>変更</button>
+        <a href={{ route('user.index') }}>キャンセル</a>
     </form>
 
 @endsection
