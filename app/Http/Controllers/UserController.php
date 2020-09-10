@@ -24,41 +24,39 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-      // if (!(Hash::check($request->get('currentPass'), Auth::user()->password)))
-      // {
-      //   return redirect()->back()->with('change_password_error', '現在のパスワードが間違っています。');
-      // }
+      // 入力エラーチェック
+      // $request->validate([
+      //   'users.name' => 'required|max:255',
+      //   'users.email' => 'required|email|unique:email|alpha_num',
+      //   // 'users.password' => 'required',
+      //   // 'newpass' => 'nullable|min:8|max:255',
+      //   // 'newpass_confirmation' => 'confirmed',
+      // ],
+      // [
+      //   'users.name.required' => '名前の入力は必須です。',
+      //   'users.name.max' => '名前は:max文字以内で設定してください。',
+      //   'users.email.required' => 'メールアドレスの入力は必須です。',
+      //   'users.email.unique' => '入力されたメールアドレスは既に使用されています。',
+      //   'users.email.alpha_num' => 'メールアドレスは英数字で入力してください。',
+      //   // 'users.password.required' => '現在のパスワードは必須です。',
+      //   // 'newpass.min' => 'パスワードは:min文字以上で設定してください。',
+      //   // 'newpass.max' => 'パスワードは:max文字以内で設定してください。',
+      //   // 'newpass_confirmation.confirmed' => '確認用パスワードが一致していません。',
+      // ]);
 
-      $request->validate([
-        'users.name' => 'required',
-        'users.email' => 'required|email|unique:email|alpha_num',
-        'users.password' => 'required',
-        'users.newpass' => 'sometimes|min:8',
-        'users.newpass_confirmation' => 'confirmed',
-      ],
-      [
-        'users.name.required' => '名前は必須です。',
-        'users.email.required' => 'メールアドレスは必須です。',
-        'users.password.required' => '現在のパスワードは必須です。',
-        'users.newpass_confirmation.confirmed' => '確認用パスワードが一致していません。',
-      ]);
-
+      // 現在のパスワードが合っていたら処理
       $auth = Auth::user();
-      $auth->name = request('name');
-      $auth->email = request('email');
-      $auth->password = Hash::make(request('newPass'));
-      $auth->save();
-      return redirect()->route('user.index', ['auth' => $auth]);
-
-
+      // $currentPass = $auth->password;
+      // $password = request('password');
       // if (Hash::check($password, $currentPass))
       // {
-      //   if ($request->input('newPass') === $request->input('confirmPass'))
-      //   {
-      //     $auth->password = Hash::make(request('newPass'));
-      //     $auth->save();
-      //     return redirect()->route('user.index', ['auth' => $auth]);
-      //   }
+        $auth->name = request('name');
+        $auth->email = request('email');
+        // $auth->password = Hash::make($password);
+        $auth->save();
+        return redirect()->route('user.index', ['auth' => $auth]);
+      // } else {
+      //   return Response::make('現在のパスワードが間違っています。');
       // }
   }
 }
