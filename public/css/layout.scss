@@ -23,3 +23,29 @@ table {
   width: 300px;
   margin-bottom: 10px;
 }
+
+.profile-list {
+  margin: 20px 0;
+}
+
+.profile-group {
+  display: flex;
+  margin: 5px 0;
+}
+
+.profile-title {
+  width: 15%;
+}
+
+.redstr {
+  color: red;
+  font-size: 14px;
+}
+
+.alert {
+  padding: 10px 0;
+
+  ul {
+    margin: 0;
+  }
+}

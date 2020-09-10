@@ -24,30 +24,41 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-      $user = Auth::user();
+      // if (!(Hash::check($request->get('currentPass'), Auth::user()->password)))
+      // {
+      //   return redirect()->back()->with('change_password_error', '現在のパスワードが間違っています。');
+      // }
 
-      // 現在のパスワード取得
-      $currentPass = $user->password;
       $request->validate([
-        'name' => 'required',
-        'email' => 'required|email|unique:email|min:8',
-        'password' => 'required'
-        ]);
+        'users.name' => 'required',
+        'users.email' => 'required|email|unique:email|alpha_num',
+        'users.password' => 'required',
+        'users.newpass' => 'sometimes|min:8',
+        'users.newpass_confirmation' => 'confirmed',
+      ],
+      [
+        'users.name.required' => '名前は必須です。',
+        'users.email.required' => 'メールアドレスは必須です。',
+        'users.password.required' => '現在のパスワードは必須です。',
+        'users.newpass_confirmation.confirmed' => '確認用パスワードが一致していません。',
+      ]);
 
-      // 入力されたパスワード取得
-      $password = $request->input('password');
-
-      if (Hash::check($password, $currentPass))
-      {
-        if ($request->input('newPass') === $request->input('confirmPass'))
-        {
-          $auth->password = Hash::make(request('newPass'));
-          $auth->save();
-          return redirect()->route('user.index', ['auth' => $auth]);
-        }
-      }
-
-    }
+      $auth = Auth::user();
+      $auth->name = request('name');
+      $auth->email = request('email');
+      $auth->password = Hash::make(request('newPass'));
+      $auth->save();
+      return redirect()->route('user.index', ['auth' => $auth]);
 
 
+      // if (Hash::check($password, $currentPass))
+      // {
+      //   if ($request->input('newPass') === $request->input('confirmPass'))
+      //   {
+      //     $auth->password = Hash::make(request('newPass'));
+      //     $auth->save();
+      //     return redirect()->route('user.index', ['auth' => $auth]);
+      //   }
+      // }
+  }
 }
