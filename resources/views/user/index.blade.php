@@ -7,11 +7,11 @@
     <hr>
       <div class="profile-group">
         <div class="profile-title">名前</div>
-        <div class="profile-element">{{ $auth->name }}</div>
+        <div class="profile-element">{{ $user->name }}</div>
       </div>
       <div class="profile-group">
         <div class="profile-title">メールアドレス</div>
-        <div class="profile-element">{{ $auth->email }}</div>
+        <div class="profile-element">{{ $user->email }}</div>
       </div>
     <hr>
     </div>
