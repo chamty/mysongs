@@ -15,4 +15,9 @@ class Songs extends Model
     {
       return $this->belongsTo('App\User');
     }
+
+    public function status()
+    {
+      return $this->belongsTo('App\Status');
+    }
 }
