@@ -27,7 +27,7 @@ class UserController extends Controller
       $user = Auth::user();
       // 入力エラーチェック
       if ($request ->name !== $user->name) {
-        $valiated = $request->validate([
+        $validated = $request->validate([
           'name' => 'required|max:255',
         ],
         [
@@ -35,7 +35,7 @@ class UserController extends Controller
         ]);
       }
       if ($request->email !== $user->email) {
-        $valiated = $request->validate([
+        $validated = $request->validate([
           'email' => 'required|email|unique:users,email',
         ],
         [
@@ -43,7 +43,7 @@ class UserController extends Controller
         ]);
       }
 
-      // $valiated = $request->validate([
+      // $validated = $request->validate([
       //   'name' => 'required|max:255',
       //   'email' => 'required|email|unique:users,email',
       //   'users.password' => 'required',
