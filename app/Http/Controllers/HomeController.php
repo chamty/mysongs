@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -19,8 +20,9 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-      $user = $request->user();
-      $songs = $user->load('songs');
-      return view('index', ['songs' => $songs->songs]);
+      $user_id = Auth::id();
+      $songs = App\Songs::where('user_id', $user_id);
+      $repertoires = $songs->where('status', 'repertoire');
+      return view('index', ['songs' => $songs->songs, 'repertoires' => $repertoires]);
     }
 }

@@ -5,15 +5,16 @@
   <h1 id="song-title">My Songs</h1>
 
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#repertoire" data-toggle="tab">レパートリー</a></li>
+    <li class="active"><a href="#allsongs" data-toggle="tab">全曲</a></li>
+    <li><a href="#repertoire" data-toggle="tab">レパートリー</a></li>
     <li><a href="#practice" data-toggle="tab">練習中</a></li>
     <li><a href="#wantprac" data-toggle="tab">練習したい</a></li>
   </ul>
   <div class="tab-content">
-    <div class="tab-pane active" id="repertoire">
+    <div class="tab-pane active" id="allsongs">
       <table class='table table-striped table-hover'>
         <tr>
-          <th id="red" style="width:50%">曲名タブ1</th>
+          <th id="red" style="width:50%">全曲</th>
           <th style="width:37%">アーティスト</th>
           <th style="width:13%">完成度</th>
         </tr>
@@ -26,6 +27,26 @@
             </td>
             <td>{{ $song->artist }}</td>
             <td>{{ $song->category->name }}</td>
+          </tr>
+        @endforeach
+      </table>
+    </div>
+    <div class="tab-pane" id="repertoire">
+      <table class='table table-striped table-hover'>
+        <tr>
+          <th id="red" style="width:50%">曲名タブ1</th>
+          <th style="width:37%">アーティスト</th>
+          <th style="width:13%">完成度</th>
+        </tr>
+        @foreach ($repertoires as $repertoire)
+          <tr>
+            <td>
+              <a href={{ route('songs.detail', ['id' => $repertoire->id]) }}>
+                {{ $repertoire->song_name }}
+              </a>
+            </td>
+            <td>{{ $repertoire->artist }}</td>
+            <td>{{ $repertoire->category->name }}</td>
           </tr>
         @endforeach
       </table>
